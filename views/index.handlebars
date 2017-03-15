@@ -5,17 +5,36 @@
                 {{#unless this.devoured}}
                     <div class="undevoured">
                         <p>{{this.burger_name}}</p>
-                        <form action="/?_method=PUT" method="POST">
+                        <form action="/{{this.id}}?_method=PUT" method="POST">
                             <input type="hidden" name="devoured" value="true">
                             <button type="submit">Eat Me!</button>
                         </form>
                     </div>
+                {{/unless}}
+            {{/each}}
         </div>
 
         <div class="col-md-4">
+
+            <p>Add a burger to the burg-antor:</p>
+            <form action="/" method="POST">
+                <input type="text" name="burger_name"><br>
+                <button type="submit">Burga-nate!</button>
+            </form>           
+
         </div>
 
+
         <div class="col-md-4">
+
+            {{#each burgers}}
+                {{#if this.devoured}}
+                    <div class="devoured">
+                        <p>{{this.burger_name}}</p>
+                    </div>
+                {{/if}}
+            {{/each}}
+
         </div>
     </div>
 </div>

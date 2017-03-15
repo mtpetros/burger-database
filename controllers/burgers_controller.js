@@ -18,8 +18,9 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/", (req, res) => {
-    var condition = "id = " + req.body.id;
+router.put("/:id", (req, res) => {
+    var condition = "id = " + req.params.id;
+    console.log(req.body);
     burger.update({devoured: req.body.devoured}, condition, () => {
         res.redirect("/");
     });
