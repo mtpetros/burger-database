@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {{#each burgers}}
+                {{#unless this.devoured}}
+                    <div class="undevoured">
+                        <p>{{this.burger_name}}</p>
+                        <form action="/?_method=PUT" method="POST">
+                            <input type="hidden" name="devoured" value="true">
+                            <button type="submit">Eat Me!</button>
+                        </form>
+                    </div>
+        </div>
+
+        <div class="col-md-4">
+        </div>
+
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
