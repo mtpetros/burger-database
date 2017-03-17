@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+    console.log(req);
     burger.create(["burger_name"], [req.body.burger_name], () => {
         res.redirect("/");
     });
@@ -21,6 +22,14 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
     var condition = "id = " + req.params.id;
     console.log(req.body);
+    burger.update({devoured: req.body.devoured}, condition, () => {
+        res.redirect("/");
+    });
+});
+
+router.put("/", (req, res) => {
+    console.log(req.body);
+    var condition = "devoured = true";
     burger.update({devoured: req.body.devoured}, condition, () => {
         res.redirect("/");
     });

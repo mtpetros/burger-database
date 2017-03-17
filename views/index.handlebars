@@ -1,6 +1,9 @@
-<div class="container">
+<div class="main container">
     <div class="row">
-        <div class="col-md-4">
+        
+        <div class="left col-md-3">
+        <div class="top-bun"></div>
+            <p>burger menu</p>
             {{#each burgers}}
                 {{#unless this.devoured}}
                     <div class="undevoured">
@@ -12,21 +15,23 @@
                     </div>
                 {{/unless}}
             {{/each}}
+            <div class="bottom-bun"></div>
         </div>
 
-        <div class="col-md-4">
-
+        <div class="middle col-md-4 col-md-offset-1">
             <p>Add a burger to the burg-antor:</p>
-            <form action="/" method="POST">
-                <input type="text" name="burger_name"><br>
-                <button type="submit">Burga-nate!</button>
-            </form>           
-
+            <div class="burger-adder">
+                <form action="/" method="POST">
+                    <input type="text" name="burger_name"><br>
+                    <button type="submit">Burga-nate!</button>
+                </form>
+            </div>
         </div>
 
-
-        <div class="col-md-4">
-
+        
+        <div class="right col-md-3 col-md-offset-1">
+        <div class="top-bun"></div>
+            <p>devoured burgers</p>
             {{#each burgers}}
                 {{#if this.devoured}}
                     <div class="devoured">
@@ -34,7 +39,11 @@
                     </div>
                 {{/if}}
             {{/each}}
-
+            <form action="/?_method=PUT" method="POST">
+                <input type="hidden" name="devoured" value="false">
+                <button type="submit">Re-burga-nate Me!</button>
+            </form>
+            <div class="bottom-bun"></div>
         </div>
     </div>
 </div>
